@@ -25,7 +25,8 @@ For those who want to do range searches and nearest neighbor searches in multidi
 * Documentation: `GitHub README.md`
 
 ## System Archtecture
-![image](https://github.com/davidzwei/KD-Tree/docs/system_architure.png)
+![image](https://github.com/davidzwei/KD-Tree/blob/main/docs/system_architecture.png)
+
 ## API
 ### Python
 - `Load_data('data.txt')`
