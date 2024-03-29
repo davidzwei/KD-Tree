@@ -23,9 +23,6 @@ void KdTree::print()
 
 int KdTree::makeKDTree(int l, int r, int depth)
 {
-    // // read
-    // read_input();
-
     if (!(l < r))
         return NIL;
 
@@ -48,7 +45,6 @@ int KdTree::makeKDTree(int l, int r, int depth)
     this->T[t].l = this->makeKDTree(l, mid, depth + 1);
     this->T[t].r = this->makeKDTree(mid + 1, r, depth + 1);
 
-    // cout << "t = " << t << endl;
     return t;
 }
 
@@ -60,7 +56,6 @@ void KdTree::region_find(int v, int sx, int tx, int sy, int ty, int sz, int tz, 
 
     if (sx <= x && x <= tx && sy <= y && y <= ty && sz <= z && z <= tz)
     {
-        // ans.push_back(this->P[this->T[v].location]);
         this->range_ans.push_back(this->P[this->T[v].location]);
         this->num_range_ans++;
     }
@@ -193,7 +188,6 @@ void KdTree::initialze()
 
 void KdTree::read_input(string str)
 {
-    // cout << str << endl;
     FILE *fptr;
     fptr = fopen(str.c_str(), "r");
     if (fptr == NULL)
@@ -202,19 +196,15 @@ void KdTree::read_input(string str)
         exit(1);
     }
 
-    // vector<vector<int>> data2(number, vector<int>(dim));
-
     for (int i = 0; i < this->vcount; i++)
     {
         for (int j = 0; j < dim; j++)
         {
             fscanf(fptr, "%d", &vlist[i][j]);
         }
-        // fprintf(fptr, "\n");
     }
 
     fclose(fptr);
-    // cout << "vcount = " << this->vcount << endl;
 }
 
 vector<Point> KdTree::get_range_ans()
@@ -229,8 +219,6 @@ bool lessZ(const Point &p1, const Point &p2) { return p1.z < p2.z; }
 vector<int> KdTree::nearst_bruteforce(double x1, double y1, double z1, double r)
 {
     double distance = r;
-    // cout << distance << endl;
-    // cout << this->vcount << endl;
     double ans_x, ans_y, ans_z;
 
     for (int i = 0; i < this->vcount; i++)
@@ -238,20 +226,14 @@ vector<int> KdTree::nearst_bruteforce(double x1, double y1, double z1, double r)
         double x = this->vlist[i][0];
         double y = this->vlist[i][1];
         double z = this->vlist[i][2];
-
-        // cout << x << " "<< y << " "<< z << endl;
         double r1 = sqrt((x - x1) * (x - x1) + (y - y1) * (y - y1) + (z - z1) * (z - z1));
-        // cout  << r1 << endl;
+
         if (r1 < distance)
         {
-
-            // ans = this->P[this->T[v].location];
             ans_x = x;
             ans_y = y;
             ans_z = z;
             distance = r1;
-            // cout << ans_x << " " << ans_y << " " << ans_z << endl;
-            // cout << distance << endl;
         }
     }
     vector<int> ans;
