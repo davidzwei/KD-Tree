@@ -12,8 +12,6 @@ namespace pybind = pybind11;
 #define MAX 1000000
 #define NIL -1
 
-using namespace std;
-
 class Node
 {
 public:
@@ -32,7 +30,7 @@ public:
 
     void print()
     {
-        cout << (int)x << " " << (int)y << " " << (int)z << endl;
+        std::cout << (int)x << " " << (int)y << " " << (int)z << std::endl;
     }
 };
 
@@ -45,7 +43,7 @@ public:
     int dim;
     int vcount;
     int vlist[50000][3];
-    vector<Point> range_ans;
+    std::vector<Point> range_ans;
     int num_range_ans;
 
     KdTree()
@@ -58,10 +56,10 @@ public:
     int makeKDTree(int l, int r, int depth);
     void region_find(int v, int sx, int tx, int sy, int ty, int sz, int tz, int depth);
     void nearst_find(int v, double x1, double y1, double z1, double &r, int depth, Point &ans);
-    vector<int> nearst_bruteforce(double x1, double y1, double z1, double r);
+    std::vector<int> nearst_bruteforce(double x1, double y1, double z1, double r);
     void region_bruteforce(int x1, double x2, double y1, double y2, double z1, double z2);
-    void read_input(string str);
-    vector<Point> get_range_ans();
+    void read_input(std::string str);
+    std::vector<Point> get_range_ans();
 };
 
 bool lessX(const Point &p1, const Point &p2);

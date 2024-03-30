@@ -11,8 +11,6 @@
 #include <string>
 #include "KdTree.h"
 
-using namespace std;
-
 void KdTree::print()
 {
     for (int i = 0; i < 100; i++)
@@ -30,15 +28,15 @@ int KdTree::makeKDTree(int l, int r, int depth)
     int t = this->np++;
     if (depth % 3 == 0)
     {
-        sort(this->P + l, this->P + r, lessX);
+        std::sort(this->P + l, this->P + r, lessX);
     }
     else if (depth % 3 == 1)
     {
-        sort(this->P + l, this->P + r, lessY);
+        std::sort(this->P + l, this->P + r, lessY);
     }
     else
     {
-        sort(this->P + l, this->P + r, lessZ);
+        std::sort(this->P + l, this->P + r, lessZ);
     }
 
     this->T[t].location = mid;
@@ -186,7 +184,7 @@ void KdTree::initialze()
     }
 }
 
-void KdTree::read_input(string str)
+void KdTree::read_input(std::string str)
 {
     FILE *fptr;
     fptr = fopen(str.c_str(), "r");
@@ -207,7 +205,7 @@ void KdTree::read_input(string str)
     fclose(fptr);
 }
 
-vector<Point> KdTree::get_range_ans()
+std::vector<Point> KdTree::get_range_ans()
 {
     return this->range_ans;
 }
@@ -216,7 +214,7 @@ bool lessX(const Point &p1, const Point &p2) { return p1.x < p2.x; }
 bool lessY(const Point &p1, const Point &p2) { return p1.y < p2.y; }
 bool lessZ(const Point &p1, const Point &p2) { return p1.z < p2.z; }
 
-vector<int> KdTree::nearst_bruteforce(double x1, double y1, double z1, double r)
+std::vector<int> KdTree::nearst_bruteforce(double x1, double y1, double z1, double r)
 {
     double distance = r;
     double ans_x, ans_y, ans_z;
@@ -236,7 +234,7 @@ vector<int> KdTree::nearst_bruteforce(double x1, double y1, double z1, double r)
             distance = r1;
         }
     }
-    vector<int> ans;
+    std::vector<int> ans;
     ans.push_back(int(double(ans_x)));
     ans.push_back(int(double(ans_y)));
     ans.push_back(int(double(ans_z)));

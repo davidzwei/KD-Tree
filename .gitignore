@@ -21,6 +21,7 @@ Thumbs.db
 # Ignore compiled binaries
 *.exe
 *.out
+*.so
 
 # Ignore dependency directories
 node_modules/
